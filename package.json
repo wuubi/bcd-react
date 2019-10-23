@@ -1,0 +1,45 @@
+{
+  "name": "bigcom-dev",
+  "version": "1.0.0",
+  "description": "apex of commerce and code",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --mode development",
+    "build": "webpack -p"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-inline-react-svg": "^1.1.0",
+    "css-loader": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.4",
+    "react-hot-loader": "^4.12.15",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
+  },
+  "dependencies": {
+    "@bigcommerce/big-design": "^0.11.1",
+    "dotenv": "^8.2.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "styled-components": "^4.4.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "babel-plugin-inline-react-svg"
+    ]
+  }
+}

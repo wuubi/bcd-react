@@ -1,0 +1,14 @@
+#apps {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  width: 100%;
+}
+.block {
+  display: inline-block;
+}
+.github {
+  display: inline-block;
+  width: 14%;
+  height: 14%;
+}
