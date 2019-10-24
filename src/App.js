@@ -17,13 +17,14 @@ function App() {
   return (
     <div>
       <GlobalStyles />
-      <Box backgroundColor="brand" padding="xxLarge">
+      <Box backgroundColor="brand" padding="xLarge">
         <H0 color="primary">BigCom.Dev</H0>
       </Box>
       <H1>Apps</H1>
       <div id="apps">
+      <Panel>
         <div class="block">
-          <Panel>
+          
             <a href="https://store.bigcom.dev">
               <BigCommerce_Logo />
               <br></br>
@@ -33,10 +34,12 @@ function App() {
             <div class="github">
               <GitHub_Logo />
             </div>
-          </Panel>
+          
         </div>
+        </Panel>
+        <Panel>
         <div class="block">
-          <Panel>
+         
             <a href="https://gatsby.bigcom.dev">
               <GatsbyJS_Logo />
               <br></br>
@@ -48,10 +51,12 @@ function App() {
                 <GitHub_Logo /> <Small>GitHub Starter Repo</Small>
               </a>
             </div>
-          </Panel>
+          
         </div>
+        </Panel>
+        <Panel>
         <div class="block">
-          <Panel>
+          
             <a href="https://wp.bigcom.dev">
               <WordPress_Logo />
               <br></br>
@@ -61,10 +66,10 @@ function App() {
             <div class="github">
               <GitHub_Logo />
             </div>
-          </Panel>
         </div>
+        </Panel>
+        <Panel>
         <div class="block">
-          <Panel>
             <a href="https://drupal.bigcom.dev">
               <Drupal_Logo />
               <br></br>
@@ -76,8 +81,9 @@ function App() {
                 <GitHub_Logo /> <Small>GitHub Starter Repo</Small>
               </a>
             </div>
-          </Panel>
+         
         </div>
+        </Panel>
       </div>
     </div>
   );

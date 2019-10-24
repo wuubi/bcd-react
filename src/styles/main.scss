@@ -1,10 +1,13 @@
 #apps {
   display: flex;
-  flex-direction: row;
+  justify-content: space-evenly;
+  align-items:stretch;
+
   text-align: center;
-  width: 100%;
+  flex-wrap:wrap;
 }
 .block {
+  flex-grow:1;
   display: inline-block;
 }
 .github {
