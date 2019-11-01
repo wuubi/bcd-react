@@ -3,9 +3,12 @@ import {
   GlobalStyles,
   H0,
   H1,
+  H2,
+  H3,
   Box,
   Small,
-  Panel
+  Panel,
+  Grid
 } from '@bigcommerce/big-design';
 import './styles/main.scss';
 import BigCommerce_Logo from './BigCommerce_logo.svg';
@@ -14,17 +17,36 @@ import WordPress_Logo from './wordpress_logo.svg';
 import Drupal_Logo from './drupal_logo.svg';
 import GitHub_Logo from './github_logo.svg';
 function App() {
+  const template = `
+  "head head" 180px
+  "nav  main" 700px
+  "foot  foot" 50px
+  / 1fr 5fr;
+`;
   return (
     <div>
       <GlobalStyles />
+      
+      <Grid gridTemplate={template}>
+      <Grid.Item gridArea="head">
       <Box backgroundColor="brand" padding="xLarge">
         <H0 color="primary">BigCom.Dev</H0>
       </Box>
       <H1>Apps</H1>
-      <div id="apps">
+      </Grid.Item>
+      <Grid.Item gridArea="nav">
+        <Small>Whisklist Widget</Small>
+      </Grid.Item>
+      <Grid.Item gridArea="main">
+        <div id="apps">
       <Panel>
+        
+
+        <H2>Storefronts</H2>
+        <Grid gridColumns="repeat(3,1fr)">
+        <Grid.Item>
         <div class="block">
-          
+          <H3>BigCommerce Storefronts</H3>
             <a href="https://store.bigcom.dev">
               <BigCommerce_Logo />
               <br></br>
@@ -32,12 +54,17 @@ function App() {
             </a>
             <br></br>
             <div class="github">
-              <GitHub_Logo />
+              <a href="https://github.com/bigcommerce/bigcommerce-for-wordpress">
+                <GitHub_Logo /> <Small>Cornerstone</Small>
+              </a>
             </div>
           
         </div>
-        </Panel>
-        <Panel>
+        </Grid.Item>
+        </Grid>
+        <H3>Headless Storefronts</H3>
+        <Grid gridColumns="repeat(3,1fr)">
+        <Grid.Item>
         <div class="block">
          
             <a href="https://gatsby.bigcom.dev">
@@ -53,8 +80,8 @@ function App() {
             </div>
           
         </div>
-        </Panel>
-        <Panel>
+        </Grid.Item>
+        <Grid.Item>
         <div class="block">
           
             <a href="https://wp.bigcom.dev">
@@ -64,11 +91,13 @@ function App() {
             </a>
             <br></br>
             <div class="github">
-              <GitHub_Logo />
+              <a href="https://github.com/bigcommerce/bigcommerce-for-wordpress">
+              <GitHub_Logo /> <Small>BigCommerce for WordPress plugin</Small>
+              </a>
             </div>
         </div>
-        </Panel>
-        <Panel>
+        </Grid.Item>
+        <Grid.Item>
         <div class="block">
             <a href="https://drupal.bigcom.dev">
               <Drupal_Logo />
@@ -83,8 +112,17 @@ function App() {
             </div>
          
         </div>
+        </Grid.Item>
+        </Grid>
         </Panel>
+       
       </div>
+      </Grid.Item>
+      <Grid.Item gridArea="foot">
+        Footer
+      </Grid.Item>
+      
+      </Grid>
     </div>
   );
 }

@@ -1,17 +1,36 @@
 #apps {
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  justify-content: space-evenly;
-  align-items:stretch;
-
-  text-align: center;
-  flex-wrap:wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: center;
+  -ms-flex-pack: distribute;
+  justify-content: center;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
 }
 .block {
-  flex-grow:1;
+  height: 100%;
+  width: 100%;
   display: inline-block;
+  margin: 8px;
+}
+
+.block svg {
+  max-height: 100px;
+  max-width: 100px;
+  margin: auto;
 }
 .github {
-  display: inline-block;
-  width: 14%;
-  height: 14%;
+  width: 5%;
+  height: 5%;
 }
