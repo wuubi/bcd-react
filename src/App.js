@@ -50,12 +50,28 @@ function App() {
             <a href="https://store.bigcom.dev">
               <BigCommerce_Logo />
               <br></br>
-              (Slightly Modified) Base Store (Cornerstone Light 4.4.0)
+              Slightly Modified Cornerstone Light 4.4.0
             </a>
             <br></br>
             <div class="github">
-              <a href="https://github.com/obrien-k/sf-cart-api">
-                <GitHub_Logo /> <Small>Cornerstone</Small>
+              <a href="https://github.com/obrien-k/sf-multi-cart">
+                <GitHub_Logo /> <Small>Cornerstone (Modified)</Small>
+              </a>
+            </div>
+          
+        </div>
+        </Grid.Item>
+        <Grid.Item>
+        <div class="block">
+            <a href="https://cornerstone-light-demo.mybigcommerce.com/">
+              <BigCommerce_Logo />
+              <br></br>
+              Base Store (Cornerstone Light 3.4.4)
+            </a>
+            <br></br>
+            <div class="github">
+              <a href="https://github.com/bigcommerce/cornerstone">
+                <GitHub_Logo /> <Small>Base Cornerstone</Small>
               </a>
             </div>
           
