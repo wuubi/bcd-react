@@ -1,14 +1,14 @@
 {
   "name": "bigcom-dev",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "apex of commerce and code",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "start": "webpack-dev-server --open --mode development",
+    "build": "webpack -p"
   },
-  "author": "Kyle O'Brien",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
@@ -24,12 +24,10 @@
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.2",
-    "webpack-merge": "^4.2.2"
+    "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
     "@bigcommerce/big-design": "^0.11.1",
-    "clean-webpack-plugin": "^3.0.0",
     "dotenv": "^8.2.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
