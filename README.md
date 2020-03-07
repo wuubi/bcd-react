@@ -1,12 +1,19 @@
-#BigCom.dev
-This obviously needs a lot of work, but the components are there.
+#BigCom.DEV
 
-The goal of this project is to display BigCommerce's APIs in use with other CMS/server-less/etc. use-cases.
+The goal of this project is to display BigCommerce's APIs in use with other CMS/server-less/etc. The current state of the sidebar is dependent on another [project](https://github.com/obrien-k/whisklist) while still in pursuit.
 
-The current state of this is dependent on another [project](https://github.com/obrien-k/whisklist) while still in pursuit, which after time became more realized as this project has progressed.
-
-Currently, this installs what I've been able to determine the most minimal implementation of react/react-dom as well as babel and webpack. Of course this uses my current understanding of BigDesign concepts and will require refinement.
+This installs a  minimal implementation of React/React-DOM, Babel and Webpack. It also uses BigDesign concepts, that I intend to update.
 
 ##Instructions
+
 //TODO
-Be sure to use npm i -D for dev dependencies.
+
+Development
+
+Use the command `npm i -D` to install dev dependencies, and `npm run start` to start a dev server. This will auto-open your default web browser to the dev server.
+
+Production
+
+//TODO
+
+Use the command `npm run build` to create a bundle.js in your dist directory.
