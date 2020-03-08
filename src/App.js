@@ -31,7 +31,7 @@ function App() {
       <Grid gridTemplate={template}>
       <Grid.Item gridArea="head">
       <Box backgroundColor="brand" padding="xLarge">
-        <H0 color="primary">BigCom.Dev</H0>
+        <H0 color="primary">BigCom.DEV</H0>
       </Box>
       <H1>Apps</H1>
       </Grid.Item>
