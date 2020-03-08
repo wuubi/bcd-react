@@ -15,6 +15,7 @@ import BigCommerce_Logo from './BigCommerce_logo.svg';
 import GatsbyJS_Logo from './gatsbyjs_logo.svg';
 import WordPress_Logo from './wordpress_logo.svg';
 import Drupal_Logo from './drupal_logo.svg';
+import VueJS_Logo from './vuejs_logo.svg';
 import GitHub_Logo from './github_logo.svg';
 function App() {
   const template = `
@@ -50,12 +51,12 @@ function App() {
             <a href="https://store.bigcom.dev">
               <BigCommerce_Logo />
               <br></br>
-              Slightly Modified Cornerstone Light 4.4.0
+              Modified Cornerstone 4.4.0
             </a>
             <br></br>
             <div class="github">
               <a href="https://github.com/obrien-k/sf-multi-cart">
-                <GitHub_Logo /> <Small>Cornerstone (Modified)</Small>
+                <GitHub_Logo /> <Small>Cornerstone Modified</Small>
               </a>
             </div>
           
@@ -66,12 +67,12 @@ function App() {
             <a href="https://cornerstone-light-demo.mybigcommerce.com/">
               <BigCommerce_Logo />
               <br></br>
-              Base Store (Cornerstone Light 3.4.4)
+              Cornerstone Light 4.4.0
             </a>
             <br></br>
             <div class="github">
               <a href="https://github.com/bigcommerce/cornerstone">
-                <GitHub_Logo /> <Small>Base Cornerstone</Small>
+                <GitHub_Logo /> <Small>Cornerstone</Small>
               </a>
             </div>
           
@@ -129,6 +130,21 @@ function App() {
          
         </div>
         </Grid.Item>
+                <Grid.Item>
+                  <div class="block">
+                    <a href="https://bigcom.dev/#">
+                      <VueJS_Logo />
+                      <br></br>
+                      Vue.js
+                    </a>
+                    <br></br>
+                    <div class="github">
+                      <a href="https://github.com/obrien-k/bcd-vue">
+                        <GitHub_Logo /> <Small>GitHub Starter Repo</Small>
+                      </a>
+                    </div>
+                  </div>
+                </Grid.Item>
         </Grid>
         </Panel>
        
