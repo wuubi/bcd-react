@@ -16,6 +16,6 @@ Production
 
 //TODO
 
-This is running via Netlify on [BigCom.DEV](https://bigcom.dev).
+This is running via Netlify on [react.BigCom.DEV](https://react.bigcom.dev).
 
 Use the command `npm run build` to create a bundle.js in your dist directory.
