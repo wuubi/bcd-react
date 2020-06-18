@@ -11,29 +11,6 @@ import {
   Grid
 } from '@bigcommerce/big-design';
 import './styles/main.scss';
-import ApolloClient from 'apollo-boost';
-import { gql } from "apollo-boost";
-import { ApolloProvider } from '@apollo/react-hooks';
-// or you can use `import gql from 'graphql-tag';` instead
-
-const client = new ApolloClient({
-  uri: 'https://store-bq4uczryb8-313342.mybigcommerce.com/graphql',
-  credentials: 'same-origin',
-  headers: {
-    Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJlYXQiOjE2MDkyODY0MDAsInN1Yl90eXBlIjoyLCJ0b2tlbl90eXBlIjoxLCJjb3JzIjpbImh0dHBzOi8vcmVhY3QuYmlnY29tLmRldiJdLCJjaWQiOjMxMzM0MiwiaWF0IjoxNTkyNDQyMTE0LCJzdWIiOiJ0anYzYzc4bzR0bDk0OGRidGR3dXV5eHcycTYycDdrIiwic2lkIjoxMDAwNzkxMjU4LCJpc3MiOiJCQyJ9.KODglqYS8F0I3q07-4QaT68EldtA9t-m3YKo7ezav84GWfzdCNyDlPalzfBsyoTSRp1xxP9epfiag_xdYIyW_A'
-  },
-});
-client
-  .query({
-    query: gql`
-      {
-        rates(currency: "USD") {
-          currency
-        }
-      }
-    `
-  })
-  .then(result => console.log(result));
 import BigCommerce_Logo from './BigCommerce_logo.svg';
 import GatsbyJS_Logo from './gatsbyjs_logo.svg';
 import WordPress_Logo from './wordpress_logo.svg';
@@ -178,12 +155,6 @@ function App() {
       </Grid.Item>
       
       </Grid>
-
-      <ApolloProvider client={client}>
-        <div>
-          <h2>My first Apollo app 🚀</h2>
-        </div>
-      </ApolloProvider>
     </div>
   );
 }
