@@ -17,10 +17,10 @@ import { ApolloProvider } from '@apollo/react-hooks';
 // or you can use `import gql from 'graphql-tag';` instead
 
 const client = new ApolloClient({
-  uri: 'https://bigcom.dev/graphql',
+  uri: 'https://react.bigcom.dev/graphql',
   credentials: 'same-origin',
   headers: {
-    Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJlYXQiOjE2MDkyODY0MDAsInN1Yl90eXBlIjoyLCJ0b2tlbl90eXBlIjoxLCJjb3JzIjpbImh0dHBzOi8vYmlnY29tLmRldiJdLCJjaWQiOjQsImlhdCI6MTU5MjQzMTU5MSwic3ViIjoidGp2M2M3OG80dGw5NDhkYnRkd3V1eXh3MnE2MnA3ayIsInNpZCI6MTAwMDc5MTI1OCwiaXNzIjoiQkMifQ.IKBYB9nk9Z_64ffdKFXSkm-8mVSuolXHX48P41RlMs5QU0_prquD44QdWMLdq6-dFd9WZ0Fw9IoGeslYTFQPKw'
+    Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJlYXQiOjE2MDkyODY0MDAsInN1Yl90eXBlIjoyLCJ0b2tlbl90eXBlIjoxLCJjb3JzIjpbImh0dHBzOi8vYmlnY29tLmRldiJdLCJjaWQiOjMxMzM0MiwiaWF0IjoxNTkyNDQxMzM5LCJzdWIiOiJ0anYzYzc4bzR0bDk0OGRidGR3dXV5eHcycTYycDdrIiwic2lkIjoxMDAwNzkxMjU4LCJpc3MiOiJCQyJ9.NKD2fI33-cQDvqTRZo-KHWikZ_Qx4PRxcu_vAzTLK80RmqxF1tvhoYbk_tmKk9W1pCwlnuUt0cJuCex7R383TA'
   },
 });
 client
