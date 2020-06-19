@@ -13,22 +13,51 @@ import {
 import './styles/main.scss';
 import ApolloClient from 'apollo-boost';
 import { gql } from "apollo-boost";
-import { ApolloProvider } from '@apollo/react-hooks';
 // or you can use `import gql from 'graphql-tag';` instead
+import { ApolloProvider } from '@apollo/react-hooks';
+import BigCommerce_Logo from './BigCommerce_logo.svg';
+import GatsbyJS_Logo from './gatsbyjs_logo.svg';
+import WordPress_Logo from './wordpress_logo.svg';
+import Drupal_Logo from './drupal_logo.svg';
+import GitHub_Logo from './github_logo.svg';
+
+import BigCommerce from 'node-bigcommerce';
+
+const bigCommerce = new BigCommerce({
+  logLevel: 'info',
+  clientId: 'gnj1of4m0xfjjodt1uckefrfph9lsr',
+  accessToken: '8feoojawpr9uk2mr0ykaa0j6e18g4vi',
+  secret: '5e0cc04bc208cb13f5ed1d755ca9b7f7f934a45faf9f865e277df212fbf0c3ec',
+  storeHash: 'bq4uczryb8',
+  responseType: 'json',
+  apiVersion: 'v3' // Default is v2
+});
+
+const tokenReq = {
+      channel_id: 313342,
+      expires_at:1609286400,
+      allowed_cors_origins: [
+        "https://react.bigcom.dev"
+      ]
+}
+  bigCommerce.post('/storefront/api-token', tokenReq)
+  .then(data => {
+  token=data.data.token;
 
 const client = new ApolloClient({
   uri: 'https://store-bq4uczryb8-313342.mybigcommerce.com/graphql',
   credentials: 'same-origin',
   headers: {
-    Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJlYXQiOjE2MDkyODY0MDAsInN1Yl90eXBlIjoyLCJ0b2tlbl90eXBlIjoxLCJjb3JzIjpbImh0dHBzOi8vYmlnY29tLmRldiJdLCJjaWQiOjQsImlhdCI6MTU5MjQzMTU5MSwic3ViIjoidGp2M2M3OG80dGw5NDhkYnRkd3V1eXh3MnE2MnA3ayIsInNpZCI6MTAwMDc5MTI1OCwiaXNzIjoiQkMifQ.IKBYB9nk9Z_64ffdKFXSkm-8mVSuolXHX48P41RlMs5QU0_prquD44QdWMLdq6-dFd9WZ0Fw9IoGeslYTFQPKw'
+    withCredentials: true,
+    Authorization: 'Bearer ' + token
   },
 });
 client
   .query({
     query: gql`
-      query MyFirstQuery {
+      query apolloBC {
               site {
-                products (entityIds: 80) {
+                products (entityId: 80) {
                   edges {
                     product: node {
                       ...ProductFields
@@ -70,11 +99,10 @@ client
     `
   })
   .then(result => console.log(result));
-import BigCommerce_Logo from './BigCommerce_logo.svg';
-import GatsbyJS_Logo from './gatsbyjs_logo.svg';
-import WordPress_Logo from './wordpress_logo.svg';
-import Drupal_Logo from './drupal_logo.svg';
-import GitHub_Logo from './github_logo.svg';
+  });
+
+
+
 function App() {
   const template = `
   "head head" 180px
