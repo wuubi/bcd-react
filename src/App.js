@@ -55,10 +55,9 @@ function getToken() {
 getToken();
 
 const client = new ApolloClient({
-  uri: 'https://store-bq4uczryb8-313342.mybigcommerce.com/graphql',
+  uri: 'https://store.bigcom.dev/graphql',
   headers: {
-    withCredentials: true,
-    Authorization: 'Bearer '
+    Authorization: 'Bearer ' + token
   },
 });
 client
