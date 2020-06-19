@@ -55,7 +55,7 @@ function getToken() {
 const token = getToken();
 
 const client = new ApolloClient({
-  uri: 'https://store.bigcom.dev/graphql',
+  uri: 'https://react.bigcom.dev/graphql',
   headers: {
     Authorization: 'Bearer ' + token
   },
