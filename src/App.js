@@ -22,7 +22,10 @@ import Drupal_Logo from './drupal_logo.svg';
 import GitHub_Logo from './github_logo.svg';
 import BigCommerce from 'node-bigcommerce';
 
-const bigCommerce = new BigCommerce({
+
+
+function App() {
+  const bigCommerce = new BigCommerce({
   logLevel: 'info',
   clientId: 'gnj1of4m0xfjjodt1uckefrfph9lsr',
   accessToken: '8feoojawpr9uk2mr0ykaa0j6e18g4vi',
@@ -108,8 +111,6 @@ client
     `
   })
   .then(result => console.log(result));
-
-function App() {
   const template = `
   "head head" 180px
   "nav  main" 700px
