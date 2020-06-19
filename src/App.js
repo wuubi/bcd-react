@@ -20,12 +20,10 @@ import GatsbyJS_Logo from './gatsbyjs_logo.svg';
 import WordPress_Logo from './wordpress_logo.svg';
 import Drupal_Logo from './drupal_logo.svg';
 import GitHub_Logo from './github_logo.svg';
+
 import BigCommerce from 'node-bigcommerce';
 
-
-
-function App() {
-  const bigCommerce = new BigCommerce({
+const bigCommerce = new BigCommerce({
   logLevel: 'info',
   clientId: 'gnj1of4m0xfjjodt1uckefrfph9lsr',
   accessToken: '8feoojawpr9uk2mr0ykaa0j6e18g4vi',
@@ -34,7 +32,9 @@ function App() {
   responseType: 'json',
   apiVersion: 'v3' // Default is v2
 });
-function getToken() {
+
+
+async function getToken() {
   try {
     let token;
     const tokenReq = {
@@ -43,17 +43,15 @@ function getToken() {
     allowed_cors_origins: [
       "https://react.bigcom.dev"
     ]
-  }
+}
   bigCommerce.post('/storefront/api-token', tokenReq)
-    .then(data => {
-    token = data.token;
-    console.log(token);
-    });
-  return token;
+  .then(data => {
+  token = data.token;
+  console.log(token);
+  });
   }
   catch (err) {console.log(err)};
-});
-
+}
 getToken();
 const token = getToken;
 
@@ -61,7 +59,7 @@ const client = new ApolloClient({
   uri: 'https://store-bq4uczryb8-313342.mybigcommerce.com/graphql',
   headers: {
     withCredentials: true,
-    Authorization: 'Bearer ' + token
+    Authorization: 'Bearer '
   },
 });
 client
@@ -111,6 +109,8 @@ client
     `
   })
   .then(result => console.log(result));
+
+function App() {
   const template = `
   "head head" 180px
   "nav  main" 700px
