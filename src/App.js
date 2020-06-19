@@ -11,48 +11,103 @@ import {
   Grid
 } from '@bigcommerce/big-design';
 import './styles/main.scss';
-
+import ApolloClient from 'apollo-boost';
+import { gql } from "apollo-boost";
+// or you can use `import gql from 'graphql-tag';` instead
+import { ApolloProvider } from '@apollo/react-hooks';
 import BigCommerce_Logo from './BigCommerce_logo.svg';
 import GatsbyJS_Logo from './gatsbyjs_logo.svg';
 import WordPress_Logo from './wordpress_logo.svg';
 import Drupal_Logo from './drupal_logo.svg';
 import GitHub_Logo from './github_logo.svg';
-import axios from 'axios';
+
 import BigCommerce from 'node-bigcommerce';
-const header = new Headers();
-header.append('Access-Control-Allow-Origin', 'same-origin');
-header.append('X-Auth-Client', 'tjv3c78o4tl948dbtdwuuyxw2q62p7k');
-header.append('X-Auth-Token', '3p8nq5ecr4paf6sj8sllvnbkufogg4z');
-header.append('Accept', 'application/json');
-header.append('Content-Type', 'application/json');
-const body = {
+
+const bigCommerce = new BigCommerce({
+  logLevel: 'info',
+  clientId: 'gnj1of4m0xfjjodt1uckefrfph9lsr',
+  accessToken: '8feoojawpr9uk2mr0ykaa0j6e18g4vi',
+  secret: '5e0cc04bc208cb13f5ed1d755ca9b7f7f934a45faf9f865e277df212fbf0c3ec',
+  storeHash: 'bq4uczryb8',
+  responseType: 'json',
+  apiVersion: 'v3' // Default is v2
+});
+
+
+function getToken() {
+  try {
+    let token;
+    const tokenReq = {
     channel_id: 313342,
     expires_at:1609286400,
     allowed_cors_origins: [
       "https://react.bigcom.dev"
     ]
 }
+  bigCommerce.post('/storefront/api-token', tokenReq)
+  .then(data => {
+  token = data.token;
+  console.log(token);
+  });
+  }
+  catch (err) {console.log(err)};
+}
+getToken();
 
-axios.post("https://cors-anywhere.herokuapp.com/https://api.bigcommerce.com/stores/bq4uczryb8/v3/storefront/api-token", body, header)
-  .then((res) => {
-    this.setState({
-      result: res
-    });
-  })
-  .catch((error) => {
-    this.setState({
-      error: error.message
-    });
-  })
-const bigCommerce = new BigCommerce({
-  logLevel: 'info',
-  clientId: '1bykg19d1bwle8ilver5yo78m3adhy5',
-  accessToken: 'g9zkkr0r3s8w28rapcz71758b09svvc',
-  secret: 'd2bcfc05d3d7723ec64bf09389d4dae2e262ccaea0602e95e0aa316e8dc92e6d',
-  storeHash: 'bq4uczryb8',
-  responseType: 'json',
-  apiVersion: 'v3' // Default is v2
+const client = new ApolloClient({
+  uri: 'https://store-bq4uczryb8-313342.mybigcommerce.com/graphql',
+  headers: {
+    withCredentials: true,
+    Authorization: 'Bearer '
+  },
 });
+client
+  .query({
+    query: gql`
+      query apolloBC {
+              site {
+                products (entityId: 80) {
+                  edges {
+                    product: node {
+                      ...ProductFields
+                      }
+                    }
+                }
+                settings {
+                  storeName
+                  url {
+                    vanityUrl
+                  }
+                }
+              }
+            }
+          fragment ProductFields on Product {
+            id
+            entityId
+            name
+            sku
+            path
+            defaultImage {
+              img320px: url(width: 320)
+              img640px: url(width: 640)
+              img960px: url(width: 960)
+              img1280px: url(width: 1280)
+              altText
+            }
+            prices {
+              price {
+              value
+              currencyCode
+              }
+            retailPrice {
+              value
+              currencyCode
+            }
+          }
+        }
+    `
+  })
+  .then(result => console.log(result));
 
 function App() {
   const template = `
@@ -162,7 +217,11 @@ function App() {
       
       </Grid>
 
-      
+      <ApolloProvider client={client}>
+        <div>
+          <h2>My first Apollo app 🚀</h2>
+        </div>
+      </ApolloProvider>
     </div>
   );
 }
