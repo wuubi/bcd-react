@@ -34,7 +34,7 @@ const bigCommerce = new BigCommerce({
 });
 
 
-async function getToken() {
+function getToken() {
   try {
     let token;
     const tokenReq = {
@@ -53,7 +53,6 @@ async function getToken() {
   catch (err) {console.log(err)};
 }
 getToken();
-const token = getToken;
 
 const client = new ApolloClient({
   uri: 'https://store-bq4uczryb8-313342.mybigcommerce.com/graphql',
