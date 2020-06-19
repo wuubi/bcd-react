@@ -20,7 +20,6 @@ import GatsbyJS_Logo from './gatsbyjs_logo.svg';
 import WordPress_Logo from './wordpress_logo.svg';
 import Drupal_Logo from './drupal_logo.svg';
 import GitHub_Logo from './github_logo.svg';
-
 import BigCommerce from 'node-bigcommerce';
 
 const bigCommerce = new BigCommerce({
@@ -32,8 +31,6 @@ const bigCommerce = new BigCommerce({
   responseType: 'json',
   apiVersion: 'v3' // Default is v2
 });
-
-
 const getToken = new Promise(async function() {
   try {
     let token;
@@ -43,15 +40,15 @@ const getToken = new Promise(async function() {
     allowed_cors_origins: [
       "https://react.bigcom.dev"
     ]
-}
+  }
   bigCommerce.post('/storefront/api-token', tokenReq)
-  .then(data => {
-  token = data.token;
-  console.log(token);
-  });
+    .then(data => {
+    token = data.token;
+    console.log(token);
+    });
   }
   catch (err) {console.log(err)};
-})
+});
   
 const token = getToken;
 
