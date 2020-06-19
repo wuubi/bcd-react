@@ -49,7 +49,8 @@ const getToken = new Promise(async function() {
   }
   catch (err) {console.log(err)};
 });
-  
+
+getToken;
 const token = getToken;
 
 const client = new ApolloClient({
