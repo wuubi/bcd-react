@@ -33,23 +33,32 @@ const bigCommerce = new BigCommerce({
   apiVersion: 'v3' // Default is v2
 });
 
-const tokenReq = {
-      channel_id: 313342,
-      expires_at:1609286400,
-      allowed_cors_origins: [
-        "https://react.bigcom.dev"
-      ]
+
+const getToken = new Promise(async function() {
+  try {
+    let token;
+    const tokenReq = {
+    channel_id: 313342,
+    expires_at:1609286400,
+    allowed_cors_origins: [
+      "https://react.bigcom.dev"
+    ]
 }
   bigCommerce.post('/storefront/api-token', tokenReq)
   .then(data => {
-  token=data.data.token;
+  token = data.data.token;
+  return token;
+  });
+  }
+  catch (err) {console.log(err)};
+})
+  
 
 const client = new ApolloClient({
   uri: 'https://store-bq4uczryb8-313342.mybigcommerce.com/graphql',
-  credentials: 'same-origin',
   headers: {
     withCredentials: true,
-    Authorization: 'Bearer ' + token
+    Authorization: 'Bearer ' + `${getToken}`
   },
 });
 client
@@ -99,9 +108,6 @@ client
     `
   })
   .then(result => console.log(result));
-  });
-
-
 
 function App() {
   const template = `
