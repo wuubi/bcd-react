@@ -52,7 +52,7 @@ function getToken() {
   }
   catch (err) {console.log(err)};
 }
-getToken();
+const token = getToken();
 
 const client = new ApolloClient({
   uri: 'https://store.bigcom.dev/graphql',
