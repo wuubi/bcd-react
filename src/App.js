@@ -11,11 +11,69 @@ import {
   Grid
 } from '@bigcommerce/big-design';
 import './styles/main.scss';
+import ApolloClient from 'apollo-boost';
+import { gql } from "apollo-boost";
+import { ApolloProvider } from '@apollo/react-hooks';
+// or you can use `import gql from 'graphql-tag';` instead
+let arr = [80,81];
+const client = new ApolloClient({
+  uri: 'https://store-bq4uczryb8-313342.mybigcommerce.com/graphql',
+  credentials: 'same-origin',
+  headers: {
+    Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJlYXQiOjE2MDkyODY0MDAsInN1Yl90eXBlIjoyLCJ0b2tlbl90eXBlIjoxLCJjb3JzIjpbImh0dHBzOi8vYmlnY29tLmRldiJdLCJjaWQiOjQsImlhdCI6MTU5MjQzMTU5MSwic3ViIjoidGp2M2M3OG80dGw5NDhkYnRkd3V1eXh3MnE2MnA3ayIsInNpZCI6MTAwMDc5MTI1OCwiaXNzIjoiQkMifQ.IKBYB9nk9Z_64ffdKFXSkm-8mVSuolXHX48P41RlMs5QU0_prquD44QdWMLdq6-dFd9WZ0Fw9IoGeslYTFQPKw'
+  },
+});
+client
+  .query({
+    query: gql`
+      query MyFirstQuery {
+              site {
+                products (entityIds: [`+arr+`]) {
+                  edges {
+                    product: node {
+                      ...ProductFields
+                      }
+                    }
+                }
+                settings {
+                  storeName
+                  url {
+                    vanityUrl
+                  }
+                }
+              }
+            }
+          fragment ProductFields on Product {
+            id
+            entityId
+            name
+            sku
+            path
+            defaultImage {
+              img320px: url(width: 320)
+              img640px: url(width: 640)
+              img960px: url(width: 960)
+              img1280px: url(width: 1280)
+              altText
+            }
+            prices {
+              price {
+              value
+              currencyCode
+              }
+            retailPrice {
+              value
+              currencyCode
+            }
+          }
+        }
+    `
+  })
+  .then(result => console.log(result));
 import BigCommerce_Logo from './BigCommerce_logo.svg';
 import GatsbyJS_Logo from './gatsbyjs_logo.svg';
 import WordPress_Logo from './wordpress_logo.svg';
 import Drupal_Logo from './drupal_logo.svg';
-import VueJS_Logo from './vuejs_logo.svg';
 import GitHub_Logo from './github_logo.svg';
 function App() {
   const template = `
@@ -31,7 +89,7 @@ function App() {
       <Grid gridTemplate={template}>
       <Grid.Item gridArea="head">
       <Box backgroundColor="brand" padding="xLarge">
-        <H0 color="primary">BigCom.DEV</H0>
+        <H0 color="primary">BigCom.Dev</H0>
       </Box>
       <H1>Apps</H1>
       </Grid.Item>
@@ -51,27 +109,11 @@ function App() {
             <a href="https://store.bigcom.dev">
               <BigCommerce_Logo />
               <br></br>
-              Modified Cornerstone 4.4.0
+              Base Store (Cornerstone Light 4.1.1)
             </a>
             <br></br>
             <div class="github">
-              <a href="https://github.com/obrien-k/sf-multi-cart">
-                <GitHub_Logo /> <Small>Cornerstone Modified</Small>
-              </a>
-            </div>
-          
-        </div>
-        </Grid.Item>
-        <Grid.Item>
-        <div class="block">
-            <a href="https://cornerstone-light-demo.mybigcommerce.com/">
-              <BigCommerce_Logo />
-              <br></br>
-              Cornerstone Light 4.4.0
-            </a>
-            <br></br>
-            <div class="github">
-              <a href="https://github.com/bigcommerce/cornerstone">
+              <a href="https://github.com/bigcommerce/bigcommerce-for-wordpress">
                 <GitHub_Logo /> <Small>Cornerstone</Small>
               </a>
             </div>
@@ -130,21 +172,6 @@ function App() {
          
         </div>
         </Grid.Item>
-                <Grid.Item>
-                  <div class="block">
-                    <a href="https://bigcom.dev/#">
-                      <VueJS_Logo />
-                      <br></br>
-                      Vue.js
-                    </a>
-                    <br></br>
-                    <div class="github">
-                      <a href="https://github.com/obrien-k/bcd-vue">
-                        <GitHub_Logo /> <Small>GitHub Starter Repo</Small>
-                      </a>
-                    </div>
-                  </div>
-                </Grid.Item>
         </Grid>
         </Panel>
        
@@ -155,6 +182,12 @@ function App() {
       </Grid.Item>
       
       </Grid>
+
+      <ApolloProvider client={client}>
+        <div>
+          <h2>My first Apollo app 🚀</h2>
+        </div>
+      </ApolloProvider>
     </div>
   );
 }
