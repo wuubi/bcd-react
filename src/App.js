@@ -56,7 +56,7 @@ const client = new ApolloClient({
   uri: 'https://store-bq4uczryb8-313342.mybigcommerce.com/graphql',
   headers: {
     withCredentials: true,
-    Authorization: 'Bearer ' + token
+    Authorization: 'Bearer '
   },
 });
 client
