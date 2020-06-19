@@ -17,9 +17,33 @@ import GatsbyJS_Logo from './gatsbyjs_logo.svg';
 import WordPress_Logo from './wordpress_logo.svg';
 import Drupal_Logo from './drupal_logo.svg';
 import GitHub_Logo from './github_logo.svg';
-
+import axios from 'axios';
 import BigCommerce from 'node-bigcommerce';
+const header = new Headers();
+header.append('Access-Control-Allow-Origin', 'same-origin');
+header.append('X-Auth-Client', 'tjv3c78o4tl948dbtdwuuyxw2q62p7k');
+header.append('X-Auth-Token', '3p8nq5ecr4paf6sj8sllvnbkufogg4z');
+header.append('Accept', 'application/json');
+header.append('Content-Type', 'application/json');
+const body = {
+    channel_id: 313342,
+    expires_at:1609286400,
+    allowed_cors_origins: [
+      "https://react.bigcom.dev"
+    ]
+}
 
+axios.post("https://api.bigcommerce.com/stores/bq4uczryb8/v3/storefront/api-token", body, header)
+  .then((res) => {
+    this.setState({
+      result: res
+    });
+  })
+  .catch((error) => {
+    this.setState({
+      error: error.message
+    });
+  })
 const bigCommerce = new BigCommerce({
   logLevel: 'info',
   clientId: '1bykg19d1bwle8ilver5yo78m3adhy5',
@@ -29,29 +53,6 @@ const bigCommerce = new BigCommerce({
   responseType: 'json',
   apiVersion: 'v3' // Default is v2
 });
-
-
-function getToken() {
-  try {
-    let token;
-    const tokenReq = {
-    channel_id: 313342,
-    expires_at:1609286400,
-    allowed_cors_origins: [
-      "https://react.bigcom.dev"
-    ]
-}
-  bigCommerce.post('/storefront/api-token', tokenReq)
-  .then(data => {
-  token = data.token;
-  console.log(token);
-  });
-  }
-  catch (err) {console.log(err)};
-}
-const token = getToken();
-
-console.log(token);
 
 function App() {
   const template = `
