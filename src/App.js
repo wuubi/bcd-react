@@ -15,7 +15,7 @@ import ApolloClient from 'apollo-boost';
 import { gql } from "apollo-boost";
 import { ApolloProvider } from '@apollo/react-hooks';
 // or you can use `import gql from 'graphql-tag';` instead
-let arr = [80,81];
+
 const client = new ApolloClient({
   uri: 'https://store-bq4uczryb8-313342.mybigcommerce.com/graphql',
   credentials: 'same-origin',
@@ -28,7 +28,7 @@ client
     query: gql`
       query MyFirstQuery {
               site {
-                products (entityIds: [`+arr+`]) {
+                products (entityIds: 80) {
                   edges {
                     product: node {
                       ...ProductFields
