@@ -11,10 +11,7 @@ import {
   Grid
 } from '@bigcommerce/big-design';
 import './styles/main.scss';
-import ApolloClient from 'apollo-boost';
-import { gql } from "apollo-boost";
-// or you can use `import gql from 'graphql-tag';` instead
-import { ApolloProvider } from '@apollo/react-hooks';
+
 import BigCommerce_Logo from './BigCommerce_logo.svg';
 import GatsbyJS_Logo from './gatsbyjs_logo.svg';
 import WordPress_Logo from './wordpress_logo.svg';
@@ -54,59 +51,7 @@ function getToken() {
 }
 const token = getToken();
 
-const client = new ApolloClient({
-  uri: 'https://react.bigcom.dev/graphql',
-  headers: {
-    Authorization: 'Bearer ' + token
-  },
-});
-client
-  .query({
-    query: gql`
-      query apolloBC {
-              site {
-                products (entityId: 80) {
-                  edges {
-                    product: node {
-                      ...ProductFields
-                      }
-                    }
-                }
-                settings {
-                  storeName
-                  url {
-                    vanityUrl
-                  }
-                }
-              }
-            }
-          fragment ProductFields on Product {
-            id
-            entityId
-            name
-            sku
-            path
-            defaultImage {
-              img320px: url(width: 320)
-              img640px: url(width: 640)
-              img960px: url(width: 960)
-              img1280px: url(width: 1280)
-              altText
-            }
-            prices {
-              price {
-              value
-              currencyCode
-              }
-            retailPrice {
-              value
-              currencyCode
-            }
-          }
-        }
-    `
-  })
-  .then(result => console.log(result));
+console.log(token);
 
 function App() {
   const template = `
@@ -216,11 +161,7 @@ function App() {
       
       </Grid>
 
-      <ApolloProvider client={client}>
-        <div>
-          <h2>My first Apollo app 🚀</h2>
-        </div>
-      </ApolloProvider>
+      
     </div>
   );
 }
