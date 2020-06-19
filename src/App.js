@@ -46,9 +46,6 @@ const getToken = new Promise(async function() {
 }
   bigCommerce.post('/storefront/api-token', tokenReq)
   .then(data => {
-  console.log("DATA")
-  console.log(data);
-  console.log("DATA")
   token = data.token;
   console.log(token);
   });
@@ -56,12 +53,13 @@ const getToken = new Promise(async function() {
   catch (err) {console.log(err)};
 })
   
+const token = getToken;
 
 const client = new ApolloClient({
   uri: 'https://store-bq4uczryb8-313342.mybigcommerce.com/graphql',
   headers: {
     withCredentials: true,
-    Authorization: 'Bearer ' + `${getToken}`
+    Authorization: 'Bearer ' + token
   },
 });
 client
