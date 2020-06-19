@@ -1,4 +1,6 @@
 /dist/*
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+/dist/*
   Access-Control-Allow-Origin: no-cors
+/dist/*  
   X-Frame-Options: ALLOW
