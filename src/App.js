@@ -46,7 +46,7 @@ const getToken = new Promise(async function() {
 }
   bigCommerce.post('/storefront/api-token', tokenReq)
   .then(data => {
-  token = data.data.token;
+  token = data.token;
   return token;
   });
   }
