@@ -33,7 +33,7 @@ const body = {
     ]
 }
 
-axios.post("https://api.bigcommerce.com/stores/bq4uczryb8/v3/storefront/api-token", body, header)
+axios.post("https://cors-anywhere.herokuapp.com/https://api.bigcommerce.com/stores/bq4uczryb8/v3/storefront/api-token", body, header)
   .then((res) => {
     this.setState({
       result: res
