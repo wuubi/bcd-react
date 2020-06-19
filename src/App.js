@@ -25,9 +25,9 @@ import BigCommerce from 'node-bigcommerce';
 
 const bigCommerce = new BigCommerce({
   logLevel: 'info',
-  clientId: 'gnj1of4m0xfjjodt1uckefrfph9lsr',
-  accessToken: '8feoojawpr9uk2mr0ykaa0j6e18g4vi',
-  secret: '5e0cc04bc208cb13f5ed1d755ca9b7f7f934a45faf9f865e277df212fbf0c3ec',
+  clientId: '1bykg19d1bwle8ilver5yo78m3adhy5',
+  accessToken: 'g9zkkr0r3s8w28rapcz71758b09svvc',
+  secret: 'd2bcfc05d3d7723ec64bf09389d4dae2e262ccaea0602e95e0aa316e8dc92e6d',
   storeHash: 'bq4uczryb8',
   responseType: 'json',
   apiVersion: 'v3' // Default is v2
