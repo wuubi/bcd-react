@@ -25,10 +25,10 @@ import BigCommerce from 'node-bigcommerce';
 
 const bigCommerce = new BigCommerce({
   logLevel: 'info',
-  clientId: 'gnj1of4m0xfjjodt1uckefrfph9lsr',
-  accessToken: '8feoojawpr9uk2mr0ykaa0j6e18g4vi',
-  secret: '5e0cc04bc208cb13f5ed1d755ca9b7f7f934a45faf9f865e277df212fbf0c3ec',
-  storeHash: 'bq4uczryb8',
+  clientId: process.env.CLIENT,
+  accessToken: process.env.TOKEN,
+  secret: process.env.SECRET,
+  storeHash: process.env.HASH,
   responseType: 'json',
   apiVersion: 'v3' // Default is v2
 });
